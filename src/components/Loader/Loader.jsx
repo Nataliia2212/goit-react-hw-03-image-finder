@@ -1,17 +1,21 @@
-import { Audio } from 'react-loader-spinner'
-import React from 'react'
+import { MagnifyingGlass } from 'react-loader-spinner'
+import React from 'react';
+import css from './Loader.module.css'
 
 export default function Loader() {
   return (
-    <div><Audio
-  height="80"
-  width="80"
-  radius="9"
-  color="green"
-  ariaLabel="three-dots-loading"
-  wrapperStyle
-  wrapperClass
-/></div>
+    <div className={css.loader}>
+        <MagnifyingGlass
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="magnifying-glass-loading"
+            wrapperStyle={{}}
+            wrapperClass="magnifying-glass-wrapper"
+            glassColor="#c0efff"
+            color="#e15b64"
+        />
+    </div>
   )
 }
 

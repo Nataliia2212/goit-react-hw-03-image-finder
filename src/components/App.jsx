@@ -18,23 +18,19 @@ export default class App extends Component {
     isOpen: false,
   }
 
-  
-
   async componentDidUpdate(prevProps, prevState) {
     const { page, query } = this.state;
     if (prevState.query !== query || prevState.page !== page) {
       try {
-         this.setState({ isLoading: true, error: null })
-      const images = await serchImages({ page, q: query });
-      this.setState(prev => ({data : [ ...prev.data, ...images.hits], totalImages: images.totalHits}))
-    } catch (error) {
-      this.setState({ error })
+        this.setState({ isLoading: true, error: null })
+        const images = await serchImages({ page, q: query });
+        this.setState(prev => ({data : [ ...prev.data, ...images.hits], totalImages: images.totalHits}))
+      } catch (error) {
+        this.setState({ error })
       } finally {
         this.setState({ isLoading: false })
+      }
     }
-    }
-   
-    
   }
 
   handleSubmit = (query) => {
@@ -58,12 +54,10 @@ export default class App extends Component {
     return (
       <div>
         <Searchbar onSubmit={this.handleSubmit} />
-       
         {error && <h2>Something went wrong!! Try again</h2>}
         <ImageGallery galleryList={data} openModal={ this.handlClickOnImages} />
-         
-         {isLoading && <Loader/>}
-        {data.length && data.length < totalImages && <Button onClick={this.handleClick} />}
+        {isLoading && <Loader />}
+        {data && data.length < totalImages && <Button onClick={this.handleClick} />}
         {isOpen && <Modal images={images} closeModal={this.handleToggleModal} />}
       </div>
     )

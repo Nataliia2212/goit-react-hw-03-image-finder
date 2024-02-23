@@ -22,25 +22,22 @@ export default class Searchbar extends Component {
 
     render() {
         const { searchValue } = this.state;
-        // 
     return (
-    <header className={css.Searchbar}>
-  <form onSubmit={this.handleSubmitForm} className={css.SearchForm}>
+        <header className={css.Searchbar}>
+            <form onSubmit={this.handleSubmitForm} className={css.SearchForm}>
                 <button type="submit" className={css.SearchFormButton}>
-      <span className={css.SearchFormButtonLabel}>Search</span>
-    </button>
+                    <span className={css.SearchFormButtonLabel}>Search</span>
+                </button>
 
-    <input
-        className={css.SearchFormInput}
+                <input
+                    className={css.SearchFormInput}
                     value={searchValue}
                     onChange={this.handleChangeSearchValue}
-        type="text"
-        // autocomplete="off"
-        // autofocus
-        placeholder="Search images and photos"
-    />
-  </form>
-</header>
+                    type="text"
+                    placeholder="Search images and photos"
+                />
+            </form>
+        </header>
   )
   }
 }
